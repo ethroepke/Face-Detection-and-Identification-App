@@ -40,7 +40,7 @@ public class loginActivity extends AppCompatActivity {
 
         usernameInput = findViewById(R.id.loginUsername);
         passwordInput = findViewById(R.id.loginPassword);
-        signIn = findViewById(R.id.signInButton);
+        signIn = findViewById(R.id.signInLogin);
         forgotPassword = findViewById(R.id.forgotLoginButton);
         createAccount = findViewById(R.id.createAccountLogin);
         showPassword = findViewById(R.id.showPasswordLogin);
@@ -74,11 +74,14 @@ public class loginActivity extends AppCompatActivity {
                     if (validateCredentials(username, password)) {
                         Intent intent = new Intent(loginActivity.this, homeActivity.class);
                         startActivity(intent);
+                        Log.d("SignIn", "Valid credentials");
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+                        Log.d("SignIn", "Invalid credentials");
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter both fields", Toast.LENGTH_SHORT).show();
+                    Log.d("SignIn", "Empty fields");
                 }
             }
         });
@@ -89,5 +92,4 @@ public class loginActivity extends AppCompatActivity {
     private boolean validateCredentials(String username, String password) {
         return username.equals("testuser") && password.equals("password123");
     }
-
 }
