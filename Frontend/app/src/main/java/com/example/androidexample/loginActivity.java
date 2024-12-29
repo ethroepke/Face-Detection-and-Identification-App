@@ -105,6 +105,7 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(loginActivity.this, joinNowActivity.class);
                 startActivity(intent);
+                Log.d("Create Account Button", "Create account button pressed");
             }
         });
     }
