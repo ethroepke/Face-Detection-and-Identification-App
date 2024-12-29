@@ -19,6 +19,10 @@
         <activity
             android:name=".loginActivity"
             android:exported="true" />
+        <activity
+            android:name=".homeActivity"
+            android:exported="true" />
+
     </application>
 
 

@@ -14,7 +14,7 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/truefacelogo"
+        android:src="@drawable/tflogo"
         android:scaleType="centerCrop"
         android:layout_gravity="center">
     </ImageView>
@@ -86,5 +86,17 @@
         android:layout_gravity="center"
         android:backgroundTint="#001F3F">
     </Button>
+
+    <!--Show Password image button-->
+    <ImageButton
+        android:id="@+id/showPasswordLogin"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/eyehide"
+        android:scaleType="fitCenter"
+        android:layout_marginLeft="306dp"
+        android:layout_marginTop="-250dp"
+        android:background="@android:color/transparent">
+    </ImageButton>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
