@@ -30,7 +30,7 @@ public class loginActivity extends AppCompatActivity {
     private Button createAccount;
     private ImageButton showPassword;
 
-    private Boolean isPasswordVisible = false;
+    boolean isPasswordVisible = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -59,19 +59,19 @@ public class loginActivity extends AppCompatActivity {
                     if (validateCredentials(username, password)) {
                         Intent intent = new Intent(loginActivity.this, homeActivity.class);
                         startActivity(intent);
-                        Log.d("SignIn", "Valid credentials");
+                        Log.d("Sign In Button", "Valid credentials: username(" + username + ") password(" + password + ")");
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
-                        Log.d("SignIn", "Invalid credentials");
+                        Log.d("Sign In Button", "Invalid credentials: username(" + username + ") password(" + password + ")");
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter both fields", Toast.LENGTH_SHORT).show();
-                    Log.d("SignIn", "Empty fields");
+                    Log.d("Sign In Button", "Empty fields");
                 }
             }
         });
 
-        
+
         //Check to see if password is hidden or not and can click to change to view password
         showPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +84,27 @@ public class loginActivity extends AppCompatActivity {
                     showPassword.setImageResource(R.drawable.eyeshow);
                 }
                 isPasswordVisible = !isPasswordVisible;
+            }
+        });
+
+
+        //When forgot password button clicked, send to another page for verification
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(loginActivity.this, forgotpasswordActivity.class);
+                startActivity(intent);
+                Log.d("Forgot Password Button", "Forgot password button pressed");
+            }
+        });
+
+
+        //If new user and press create account button, send user to new page to create account
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(loginActivity.this, joinNowActivity.class);
+                startActivity(intent);
             }
         });
     }
