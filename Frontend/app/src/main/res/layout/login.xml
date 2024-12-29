@@ -47,7 +47,7 @@
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:hint="Password"
-        android:inputType="text">
+        android:inputType="textPassword">
     </EditText>
 
     <!-- Button to sign in -->

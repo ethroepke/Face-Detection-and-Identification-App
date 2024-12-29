@@ -45,21 +45,6 @@ public class loginActivity extends AppCompatActivity {
         createAccount = findViewById(R.id.createAccountLogin);
         showPassword = findViewById(R.id.showPasswordLogin);
 
-        //Check to see if password is hidden or not and can click to change to view password
-        showPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isPasswordVisible) {
-                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    showPassword.setImageResource(R.drawable.eyehide);
-                } else {
-                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    showPassword.setImageResource(R.drawable.eyeshow);
-                }
-                isPasswordVisible = !isPasswordVisible;
-            }
-        });
-
         //Sign in button will allow user to move to next page if credentials are valid
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +71,21 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
+        
+        //Check to see if password is hidden or not and can click to change to view password
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isPasswordVisible) {
+                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    showPassword.setImageResource(R.drawable.eyehide);
+                } else {
+                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showPassword.setImageResource(R.drawable.eyeshow);
+                }
+                isPasswordVisible = !isPasswordVisible;
+            }
+        });
     }
 
     //Test user to be able to login until we get API set up
