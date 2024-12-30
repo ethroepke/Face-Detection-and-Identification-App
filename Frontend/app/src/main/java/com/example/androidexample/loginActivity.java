@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 /**
  * The login page allows the user to login with given credentials or select forgot password or create account.
+ *
+ * This only works with dummy user for testing reasons
+ * Once API/database is working then will add JSON requests
  */
 
 public class loginActivity extends AppCompatActivity {

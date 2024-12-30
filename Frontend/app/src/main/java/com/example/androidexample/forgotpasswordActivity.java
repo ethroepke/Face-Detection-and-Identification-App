@@ -20,6 +20,9 @@ import androidx.appcompat.widget.Toolbar;
 
 /**
  * This page is for user to enter their email to verify there is an email in database then get sent to screen to reset password
+ *
+ * This will not work properly until get API working
+ * Once API/database is done, just need to add JSON requests
  */
 
 public class forgotpasswordActivity extends AppCompatActivity {
