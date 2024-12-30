@@ -1,7 +1,9 @@
 package com.example.androidexample;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,29 +14,95 @@ import android.text.TextWatcher;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class joinNowActivity extends AppCompatActivity {
 
+    private EditText nameInput;
+    private EditText emailInput;
+    private EditText usernameInput;
+    private EditText passwordInput;
+    private EditText reenterPasswordInput;
+    private Button joinNow;
+    private ImageButton showPassword;
+    private ImageButton showReenterPassword;
+
+    boolean isPasswordVisible = false;
+    boolean isPassword2Visible = false;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.joinnow);
+
+        nameInput = findViewById(R.id.nameInputJoinNow);
+        emailInput = findViewById(R.id.emailInputJoinNow);
+        usernameInput = findViewById(R.id.usernameInputJoinNow);
+        passwordInput = findViewById(R.id.enterPasswordJoinNow);
+        reenterPasswordInput = findViewById(R.id.reenterPasswordJoinNow);
+        joinNow = findViewById(R.id.joinButtonJoinNow);
+        showPassword = findViewById(R.id.showPassword1JoinNow);
+        showReenterPassword = findViewById(R.id.showPassword2JoinNow);
+
+
+        //Toolbar setup
+        Toolbar toolbar = findViewById(R.id.toolBarJoinNow);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Create Account");
+
+
+        // Set initial input types for password fields to hidden
+        passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        reenterPasswordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        //Check to see if password is hidden or not and can click to change to view password
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isPasswordVisible) {
+                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    showPassword.setImageResource(R.drawable.eyehide);
+                } else {
+                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showPassword.setImageResource(R.drawable.eyeshow);
+                }
+                isPasswordVisible = !isPasswordVisible;
+            }
+        });
+
+        //Check to see if password is hidden or not and can click to change to view password
+        showReenterPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isPassword2Visible) {
+                    reenterPasswordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    showPassword.setImageResource(R.drawable.eyehide);
+                } else {
+                    reenterPasswordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showPassword.setImageResource(R.drawable.eyeshow);
+                }
+                isPassword2Visible = !isPassword2Visible;
+            }
+        });
+    }
+
+    //Setup for toolbar back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Log.d("Check Email Back Button", "Back button from reset password to login page");
+            Intent intent = new Intent(joinNowActivity.this, loginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 

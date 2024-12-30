@@ -28,7 +28,9 @@
         <activity
             android:name=".resetPasswordActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".joinNowActivity"
+            android:exported="true" />
     </application>
 
 
