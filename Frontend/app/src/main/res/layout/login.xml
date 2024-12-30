@@ -88,7 +88,7 @@
         android:backgroundTint="#001F3F">
     </Button>
 
-    <!--Show Password image button-->
+    <!--Show/Hide Password image button-->
     <ImageButton
         android:id="@+id/showPasswordLogin"
         android:layout_width="20dp"
