@@ -104,5 +104,35 @@ public class joinNowActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Check if the full name is valid
+    private boolean isValidFullName(String nameFilled) {
+        // Check if full name is not empty and contains at least one space (indicating two words)
+        return !TextUtils.isEmpty(nameFilled) && nameFilled.contains(" ") && nameFilled.trim().split("\\s+").length >= 2;
+    }
+
+    //Check if email is valid
+    private boolean isValidEmail(String emailFilled) {
+        // Check if email matches legit email addresses
+        return !TextUtils.isEmpty(emailFilled) && Patterns.EMAIL_ADDRESS.matcher(emailFilled).matches();
+    }
+
+    //Helper method to autofill username from given name
+    private void fillUsername(EditText name, EditText username){
+        String fullName = name.getText().toString().trim();
+        //Split name by space
+        String[] firstLast = fullName.split("\\s+");
+
+        //Check first and last is in name field
+        if(firstLast.length >= 2){
+            //first initial
+            String firstInitial = firstLast[0].substring(0, 1).toLowerCase();
+            //last name
+            String lastName = firstLast[firstLast.length - 1].toLowerCase();
+
+            String usernameFinal = firstInitial + lastName;
+            usernameInput.setText(usernameFinal);
+        }
+    }
 }
 
